@@ -23,7 +23,8 @@ falcon = FalconXSandbox(client_id='api_client',
                         )
 
 def lambda_handler(event, context):
-    response = falcon.get_reports(event)
+    cs_id = event.get('cs_id')
+    response = falcon.get_reports(cs_id)
     return {
             'statusCode': 200,
             'body': json.dumps(response, indent=4)
